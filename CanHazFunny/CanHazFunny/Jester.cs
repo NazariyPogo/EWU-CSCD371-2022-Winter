@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CanHazFunny
 {
@@ -20,7 +16,7 @@ namespace CanHazFunny
         public void TellJoke()
         {
             string joke = JokeService.GetJoke();
-            while(joke.Contains("Chuck Norris"))
+            while (joke.Contains("Chuck Norris"))
             {
                 joke = JokeService.GetJoke();
             }

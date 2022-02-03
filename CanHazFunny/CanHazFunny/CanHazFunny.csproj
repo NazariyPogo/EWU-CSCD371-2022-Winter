@@ -8,6 +8,7 @@
 	  <EnableNETAnalyzers>true</EnableNETAnalyzers>
 	  <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
 	  <CodeAnalysisTreatWarningsAsErrors>true</CodeAnalysisTreatWarningsAsErrors>
+	  <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
   </PropertyGroup>
 
 </Project>
