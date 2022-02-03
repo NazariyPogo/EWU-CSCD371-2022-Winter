@@ -8,23 +8,23 @@ namespace CanHazFunny
 {
     internal class Jester
     {
-        private JokeOutput _jokeOutput;
-        private JokeService _jokeService;
+        private IJokeOutput JokeOutput { get; set; }
+        private IJokeService JokeService { get; set; }
 
-        public Jester(JokeOutput jokeOutput, JokeService jokeService)
+        public Jester(IJokeOutput jokeOutput, IJokeService jokeService)
         {
-            _jokeOutput = jokeOutput;
-            _jokeService = jokeService;
+            JokeOutput = jokeOutput ?? throw new ArgumentNullException(nameof(jokeOutput));
+            JokeService = jokeService ?? throw new ArgumentNullException(nameof(jokeOutput));
         }
 
         public void TellJoke()
         {
-            string joke = _jokeService.GetJoke();
+            string joke = JokeService.GetJoke();
             while(joke.Contains("Chuck Norris"))
             {
-                joke = _jokeService.GetJoke();
+                joke = JokeService.GetJoke();
             }
-            _jokeOutput.PrintJoke(joke);
+            JokeOutput.PrintJoke(joke);
         }
     }
 }
