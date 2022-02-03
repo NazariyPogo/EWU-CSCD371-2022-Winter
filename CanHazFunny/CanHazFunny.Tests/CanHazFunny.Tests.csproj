@@ -2,7 +2,11 @@
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
-
+	  <NullableReferenceTypes>true</NullableReferenceTypes>
+	  <Nullable>enable</Nullable>
+	  <EnableNETAnalyzers>true</EnableNETAnalyzers>
+	  <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+	  <CodeAnalysisTreatWarningsAsErrors>true</CodeAnalysisTreatWarningsAsErrors>
     <IsPackable>false</IsPackable>
   </PropertyGroup>
 
