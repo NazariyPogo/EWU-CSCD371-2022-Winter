@@ -6,8 +6,11 @@ using System.Threading.Tasks;
 
 namespace CanHazFunny
 {
-    internal interface IJokeService
+    internal class JokeOutput
     {
-        public string GetJoke();
+        public void PrintJoke(string joke)
+        {
+            System.Console.WriteLine(joke);
+        }
     }
 }
