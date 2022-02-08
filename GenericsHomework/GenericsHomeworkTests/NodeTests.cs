@@ -18,14 +18,14 @@ namespace GenericsHomeworkTests
         public void Node_ToString_Overridden()
         {
             Node<string> node = GetNode();
-            Assert.AreEqual("Inigo Montoya", node.ToString());
+            Assert.AreEqual<string>("Inigo Montoya", node.ToString()!);
         }
 
         [TestMethod]
         public void Node_ListLoopsOnItself()
         {
             Node<string> node = GetNode();
-            Assert.AreEqual(node, node.Next);
+            Assert.AreEqual<string>(node.Value, node.Next.Value);
         }
 
         [TestMethod]
@@ -33,7 +33,7 @@ namespace GenericsHomeworkTests
         {
             Node<string> node = GetNode();
             node.Append("Princess Buttercup");
-            Assert.AreEqual(node.Value, "Inigo Montoya");
+            Assert.AreEqual<string>("Inigo Montoya", node.Value);
         }
 
         [TestMethod]
@@ -41,7 +41,7 @@ namespace GenericsHomeworkTests
         {
             Node<string> node = GetNode();
             node.Append("Princess Buttercup");
-            Assert.AreEqual(node.Next.Value, "Princess Buttercup");
+            Assert.AreEqual<string>("Princess Buttercup", node.Next.Value);
         }
 
         [TestMethod]
@@ -50,7 +50,7 @@ namespace GenericsHomeworkTests
             Node<string> node = GetNode();
             node.Append("Princess Buttercup");
             node.Clear();
-            Assert.AreEqual("Inigo Montoya", node.Next.Value);
+            Assert.AreEqual<string>("Inigo Montoya", node.Next.Value);
         }
 
         [TestMethod]
@@ -84,7 +84,7 @@ namespace GenericsHomeworkTests
             Assert.IsNull(node.ToString());
         }
 
-        public Node<string> GetNode()
+        public static Node<string> GetNode()
         {
             return new Node<string>("Inigo Montoya");
         }
