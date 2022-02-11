@@ -29,8 +29,16 @@
 
         public void Clear()
         {
-            this.Next = this;
-        }   //Not sure what is meant by 'current node' in instructions
+            Node<T> prev = this, next = this.Next;
+
+            while(next != this)     //loop that makes all nodes reference themselves.
+            {
+                prev.Next = prev;
+                prev = next;
+                next = next.Next;
+            }
+            prev.Next = prev;
+        }//Garbage collection is not an issue because all nodes that aren't referenced to by main, will have no references after leaving the scope of this method.
 
         public bool Exists(T value)
         {

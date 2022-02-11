@@ -11,7 +11,7 @@ namespace GenericsHomeworkTests
         public void Node_ConstructorWorks()
         {
             Node<string> node = GetNode();
-            Assert.IsNotNull(node);
+            Assert.AreEqual<string>("Inigo Montoya", node.Value);
         }
 
         [TestMethod]
@@ -49,6 +49,9 @@ namespace GenericsHomeworkTests
         {
             Node<string> node = GetNode();
             node.Append("Princess Buttercup");
+            node.Append("Bob");
+            node.Append("Joe");
+            Assert.AreEqual<string>("Princess Buttercup", node.Next.Value);
             node.Clear();
             Assert.AreEqual<string>("Inigo Montoya", node.Next.Value);
         }
