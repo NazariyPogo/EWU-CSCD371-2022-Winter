@@ -2,9 +2,11 @@
   <PropertyGroup>
     <RootNamespace>Assignment</RootNamespace>
 	  <Nullable>enable</Nullable>
-	  <TargetFramework>net6</TargetFramework>
+	  <TargetFramework>net6.0</TargetFramework>
 	  <LangVersion>10.0</LangVersion>
 	  <EnableNETAnalyzers>true</EnableNETAnalyzers>
 	  <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+	  <CodeAnalysisTreatWarningsAsErrors>true</CodeAnalysisTreatWarningsAsErrors>
+	  <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 </Project>
