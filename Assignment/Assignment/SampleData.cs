@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Assignment
 {
@@ -7,27 +8,28 @@ namespace Assignment
     {
         // 1.
         public IEnumerable<string> CsvRows
-            {
-                get { return System.IO.File.ReadAllLines("People.csv").Skip(1); }
-            }
+            => File.ReadAllLines("People.csv").Skip(1);
 
         // 2.
-        public IEnumerable<string> GetUniqueSortedListOfStatesGivenCsvRows() 
-            => throw new NotImplementedException();
+        public IEnumerable<string> GetUniqueSortedListOfStatesGivenCsvRows()
+            => CsvRows.Select(row => row.Split(",")[6]).OrderBy(State => State).Distinct();
 
         // 3.
         public string GetAggregateSortedListOfStatesUsingCsvRows()
-            => throw new NotImplementedException();
+            => String.Join(",", GetUniqueSortedListOfStatesGivenCsvRows().ToArray());
 
         // 4.
-        public IEnumerable<IPerson> People => throw new NotImplementedException();
+        public IEnumerable<IPerson> People
+            => throw new NotImplementedException();
 
         // 5.
         public IEnumerable<(string FirstName, string LastName)> FilterByEmailAddress(
-            Predicate<string> filter) => throw new NotImplementedException();
+            Predicate<string> filter)
+            => People.Where(person => person.EmailAddress.Equals(filter)).Select(person => (person.FirstName, person.LastName));
 
         // 6.
         public string GetAggregateListOfStatesGivenPeopleCollection(
-            IEnumerable<IPerson> people) => throw new NotImplementedException();
+            IEnumerable<IPerson> people)
+            => String.Join(",", people.Select(State => State.Address.State));
     }
 }
