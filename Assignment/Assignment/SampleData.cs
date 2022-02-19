@@ -20,7 +20,11 @@ namespace Assignment
 
         // 4.
         public IEnumerable<IPerson> People
-            => throw new NotImplementedException();
+            => CsvRows.Select(item => item.Split(","))
+            .OrderBy(item => item[6])
+            .ThenBy(item => item[5])
+            .ThenBy(item => item[7])
+            .Select(person => new Person(person[1], person[2], new Address(person[4], person[5], person[6], person[7]), person[3]));
 
         // 5.
         public IEnumerable<(string FirstName, string LastName)> FilterByEmailAddress(
