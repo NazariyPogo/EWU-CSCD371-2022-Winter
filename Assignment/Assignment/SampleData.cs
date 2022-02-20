@@ -29,11 +29,12 @@ namespace Assignment
         // 5.
         public IEnumerable<(string FirstName, string LastName)> FilterByEmailAddress(
             Predicate<string> filter)
-            => People.Where(person => person.EmailAddress.Equals(filter)).Select(person => (person.FirstName, person.LastName));
+            => People.Where(person => filter(person.EmailAddress))
+            .Select(person => (person.FirstName, person.LastName));
 
         // 6.
         public string GetAggregateListOfStatesGivenPeopleCollection(
             IEnumerable<IPerson> people)
-            => String.Join(",", people.Select(State => State.Address.State));
+            => String.Join(",", people.Select(person => person.Address.State).Distinct());
     }
 }
