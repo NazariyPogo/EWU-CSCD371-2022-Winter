@@ -20,7 +20,7 @@ public class MyTestClass
         Assert.AreEqual(50, sampleData.CsvRows.Count());
 
         //Part2
-        //TODO
+        Assert.AreEqual(27, sampleData.GetUniqueSortedListOfStatesGivenCsvRows().Count());
 
         //Part3
         Assert.AreEqual(27, sampleData.GetAggregateSortedListOfStatesUsingCsvRows().Split(",").Length);
@@ -52,19 +52,48 @@ public class MyTestClass
 
     // 2.
     [TestMethod]
-    public void Part2_TestingForSortUsingHardcodedList()
-    {
-        SampleData sampleData = new();
-
-
-    }
-
-    [TestMethod]
     public void Part2_TestingForSortUsingLINQ()
     {
         SampleData sampleData = new();
+        List<string> list = sampleData.GetUniqueSortedListOfStatesGivenCsvRows().ToList();
 
+        Assert.AreEqual(0, list.LastIndexOf("AL"));
+        Assert.AreEqual("WV", list.Last());
+    }
 
+    [TestMethod]
+    public void Part2_TestingForSortUsingHardcodedList()
+    {
+        Assert.AreEqual(2, GetUniqueSortedListOfStatesGivenHardcodedList().Count());
+        Assert.AreEqual("AL", GetUniqueSortedListOfStatesGivenHardcodedList().First());
+        Assert.AreEqual("WA", GetUniqueSortedListOfStatesGivenHardcodedList().Last());  //Verifies AL moved to front
+    }
+
+    [TestMethod]
+    public void Part2_TestingForUniquenessGivenCsvRows()
+    {
+        SampleData sampleData = new();
+
+        Assert.AreEqual(sampleData.GetUniqueSortedListOfStatesGivenCsvRows().ToList().IndexOf("WA"), 
+            sampleData.GetUniqueSortedListOfStatesGivenCsvRows().ToList().LastIndexOf("WA"));   //Only one is saved
+    }
+
+    public IEnumerable<string> GetUniqueSortedListOfStatesGivenHardcodedList()
+     => GetListOfSpokaneAddresses() //Changed source of list but everything else stays the same
+        .Select(row => row.Split(",")[6])
+        .OrderBy(State => State)
+        .Distinct();
+
+    public IEnumerable<string> GetListOfSpokaneAddresses()
+    {
+        IEnumerable<string> list = new List<string>
+        {
+            "8,Joly,Scneider,jscneider7@pagesperso-orange.fr,53 Grim Point,Spokane,WA,99022",
+            "15,Phillida,Chastagnier,pchastagniere@reference.com,1 Rutledge Point,Spokane,WA,99021",
+            "19,Fayette,Dougherty,fdoughertyi@stanford.edu,6487 Pepper Wood Court,Spokane,WA,99021",
+            "49,Arthur,Myles,amyles1c@miibeian.gov.cn,4718 Thackeray Pass,Mobile,AL,37308"
+        };
+        return list;
     }
 
 
@@ -72,13 +101,23 @@ public class MyTestClass
 
     // 3.
     [TestMethod]
-    public void Part3_()
+    public void Part3_TestingForUniqueness()
     {
         SampleData sampleData = new();
-
         List<string> stateList = sampleData.GetAggregateSortedListOfStatesUsingCsvRows().Split(",").ToList();
+
         Assert.AreEqual(22, stateList.IndexOf("TX"));
         Assert.AreEqual(22, stateList.LastIndexOf("TX"));   //TX 22nd state in list and only saved once
+    }
+
+    [TestMethod]
+    public void Part3_TestingForSort()
+    {
+        SampleData sampleData = new();
+        List<string> list = sampleData.GetAggregateSortedListOfStatesUsingCsvRows().Split(",").ToList();
+
+        Assert.AreEqual(0, list.LastIndexOf("AL"));
+        Assert.AreEqual("WV", list.Last());
     }
 
 
@@ -158,7 +197,7 @@ public class MyTestClass
 
     public List<Person> GetCollection()
     {
-        List<Person> personCollection = new List<Person>
+        return new List<Person>
         {
             new("Vince", "Dee", new Address("98027 Ridgeview Lane", "Houston", "TX", "67224"), "vdeeb@japanpost.jp"),
             new("Sancho", "Mahony", new Address("90 Birchwood Street", "Las Vegas", "NV", "36230"), "smahonyg@stanford.edu"),
@@ -167,7 +206,6 @@ public class MyTestClass
             new("Claudell", "Leathe", new Address("30262 Steensland Way", "Newport News", "VA", "87930"), "cleathe1d@columbia.edu"),
             new("Priscilla", "Jenyns", new Address("7884 Corry Way", "Helena", "MT", "70577"), "pjenyns0 @state.gov"),
         };
-        return personCollection;
     }
 
 }
