@@ -10,7 +10,7 @@ namespace GenericsHomeworkTests
         [TestMethod]
         public void Node_NodeCreatedGivenInt_Success()
         {
-            Node<int> node = GetNodeInt42();
+            Node<int> node = GetNodeInt(42);
             Assert.AreEqual<int>(42, node.Value);
         }
 
@@ -127,14 +127,40 @@ namespace GenericsHomeworkTests
             Assert.IsTrue(inside);
         }
 
+        [TestMethod]
+        public void ChildItems_MethodReturnsProperSizedIEnumerableList()
+        {
+            Node<int> node42 = GetNodeInt(42);
+            Node<int> node43 = GetNodeInt(43);
+            Node<int> node44 = GetNodeInt(44);
+            Node<int> node45 = GetNodeInt(45);
+            Node<int> node46 = GetNodeInt(46);
+
+            node42.Append(node43.Value);
+            node42.Append(node44.Value);
+            node42.Append(node45.Value);
+            node42.Append(node46.Value);
+
+            //node42.Insert(node46);
+            //node42.Insert(node45);
+            //node42.Insert(node44);
+            //node42.Insert(node43);
+
+            IEnumerable<Node<int>> nodeList = node42.ChildItems(7);
+
+            Assert.AreEqual<int>(7, nodeList.Count());
+            Assert.AreEqual<int>(43, nodeList.First().Value);
+            Assert.AreEqual<int>(44, nodeList.Last().Value);
+        }
+
         public static Node<string> GetNodeStringInigoMontoya()
         {
             return new Node<string>("Inigo Montoya");
         }
 
-        public static Node<int> GetNodeInt42()
+        public static Node<int> GetNodeInt(int num)
         {
-            return new Node<int>(42);
+            return new Node<int>(num);
         }
     }
 }

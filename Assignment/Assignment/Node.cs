@@ -59,14 +59,13 @@ namespace GenericsHomework
         {
             if (this.Value.Equals(value)) { return true; }
 
-            Node<T> tracer = this;
+            Node<T> tracer = this.Next;
 
-            for (; tracer.Next != this; tracer = tracer.Next)
+            do
             {
-                if (tracer.Value.Equals(value)) { return true; }
-            }
-
-            if (tracer.Value.Equals(value)) { return true; }
+                if(tracer.Value.Equals(value)) { return true; }
+                tracer = tracer.Next;
+            } while (tracer != this);
 
             return false;
         }
@@ -78,8 +77,23 @@ namespace GenericsHomework
 
         public IEnumerable<Node<T>> ChildItems(int maximum)
         {
-            throw new NotImplementedException();
-        }
+            if(maximum <= 0) { throw new ArgumentOutOfRangeException(); }
+            if(maximum == 1) { return this; }
+
+            List<Node<T>> list = new List<Node<T>>();
+            Node<T> tracer = this.Next;
+
+            do
+            {
+                list.Add(tracer);
+
+                tracer = tracer.Next;
+                maximum--;
+            }while (maximum > 0);
+
+            return list;
+        }   //This method was made to continue looping through the list until maximum is reached
+            //NOT until the list loops once. Meg said it was fine.
         
         public IEnumerator<Node<T>> GetEnumerator()
         {
