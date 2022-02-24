@@ -11,33 +11,6 @@ namespace Assignment.Tests;
     [TestClass]
 public class MyTestClass
 {
-    [TestMethod]
-    public void AllParts_AllListsCreated()
-    {
-        SampleData sampleData = new();
-
-        //Part1
-        Assert.AreEqual(50, sampleData.CsvRows.Count());
-
-        //Part2
-        Assert.AreEqual(27, sampleData.GetUniqueSortedListOfStatesGivenCsvRows().Count());
-
-        //Part3
-        Assert.AreEqual(27, sampleData.GetAggregateSortedListOfStatesUsingCsvRows().Split(",").Length);
-
-        //Part4
-        Assert.AreEqual(50, sampleData.People.Count());
-
-        //Part5
-        Assert.AreEqual(5, sampleData.FilterByEmailAddress(filter).Count());
-
-        //Part6
-        Assert.AreEqual(5, sampleData.GetAggregateListOfStatesGivenPeopleCollection(GetCollection()).Split(",").Count());
-    }
-
-
-
-
     // 1.
     [TestMethod]
     public void Part1_FileWrittenToArray()
@@ -118,6 +91,15 @@ public class MyTestClass
 
         Assert.AreEqual(0, list.LastIndexOf("AL"));
         Assert.AreEqual("WV", list.Last());
+    }
+
+    [TestMethod]
+    public void Part3_FormattedProperly()
+    {
+        SampleData sampleData = new();
+        string formatted = "AL,AZ,CA,DC,FL,GA,IN,KS,LA,MD,MN,MO,MT,NC,NE,NH,NV,NY,OR,PA,SC,TN,TX,UT,VA,WA,WV";
+
+        Assert.AreEqual(formatted, sampleData.GetAggregateSortedListOfStatesUsingCsvRows());
     }
 
 
