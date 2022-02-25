@@ -8,7 +8,7 @@ namespace Assignment
     {
         // 1.
         public IEnumerable<string> CsvRows
-            => File.ReadAllLines("People.csv").Skip(1);
+            => File.ReadAllLines(AppDomain.CurrentDomain.BaseDirectory + "People.csv").Skip(1);
 
         // 2.
         public IEnumerable<string> GetUniqueSortedListOfStatesGivenCsvRows()
