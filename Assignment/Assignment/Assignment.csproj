@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <ItemGroup>
@@ -5,3 +6,6 @@
   </ItemGroup>
 
 </Project>
+=======
+﻿<Project Sdk="Microsoft.NET.Sdk" />
+>>>>>>> 60e7b3d17ecfe75d00773639ee1d20a5d3fdf804
