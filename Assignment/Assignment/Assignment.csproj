@@ -1,11 +1,1 @@
-<<<<<<< HEAD
-﻿<Project Sdk="Microsoft.NET.Sdk">
-
-  <ItemGroup>
-    <ProjectReference Include="..\Assignment.Interfaces\Assignment.Interfaces.csproj" />
-  </ItemGroup>
-
-</Project>
-=======
-﻿<Project Sdk="Microsoft.NET.Sdk" />
->>>>>>> 60e7b3d17ecfe75d00773639ee1d20a5d3fdf804
+<Project Sdk="Microsoft.NET.Sdk" />
