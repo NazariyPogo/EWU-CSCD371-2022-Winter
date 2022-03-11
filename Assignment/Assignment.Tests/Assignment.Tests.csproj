@@ -1,23 +1,16 @@
-<<<<<<< HEAD
 <Project Sdk="Microsoft.NET.Sdk">
-=======
-﻿<Project Sdk="Microsoft.NET.Sdk">
->>>>>>> 60e7b3d17ecfe75d00773639ee1d20a5d3fdf804
 
-  <PropertyGroup>
-    <IsPackable>false</IsPackable>
-  </PropertyGroup>
+	<PropertyGroup>
+		<IsPackable>false</IsPackable>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.2.0" />
-    <PackageReference Include="MSTest.TestAdapter" Version="1.4.0" />
-    <PackageReference Include="MSTest.TestFramework" Version="1.4.0" />
-    <PackageReference Include="coverlet.collector" Version="1.0.1" />
-<<<<<<< HEAD
-=======
-    <ProjectReference Include="..\Assignment\Assignment.csproj" />
-	  <Using Include="Microsoft.VisualStudio.TestTools.UnitTesting" />
->>>>>>> 60e7b3d17ecfe75d00773639ee1d20a5d3fdf804
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.2.0" />
+		<PackageReference Include="MSTest.TestAdapter" Version="1.4.0" />
+		<PackageReference Include="MSTest.TestFramework" Version="1.4.0" />
+		<PackageReference Include="coverlet.collector" Version="1.0.1" />
+		<ProjectReference Include="..\Assignment\Assignment.csproj" />
+		<Using Include="Microsoft.VisualStudio.TestTools.UnitTesting" />
+	</ItemGroup>
 
 </Project>
